@@ -1,0 +1,101 @@
+definitions:
+  dtos.SchedulerTiming:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      org_id:
+        type: string
+      purpose:
+        type: string
+      start_time:
+        type: string
+      timezone:
+        type: string
+    type: object
+  dtos.UpdateSchedulerTimingRequest:
+    properties:
+      id:
+        type: integer
+      org_id:
+        type: string
+      start_time:
+        type: string
+      timezone:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/webhook:
+    get:
+      consumes:
+      - application/json
+      description: do ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Handle Task Change
+      tags:
+      - example
+  /ms-notification/config/scheduler_timing:
+    post:
+      consumes:
+      - application/json
+      description: UpdateScheduledTiming
+      parameters:
+      - description: Request body
+        in: body
+        name: schedulerTiming
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.UpdateSchedulerTimingRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dtos.SchedulerTiming'
+      summary: Update Scheduled Timing config
+      tags:
+      - UpdateScheduledTiming
+  /ms-notification/validate:
+    post:
+      consumes:
+      - application/json
+      description: ValidateNotification
+      produces:
+      - application/json
+      responses: {}
+      summary: ValidateNotification config
+      tags:
+      - ValidateNotification
+  /ms-notification/validate_task_due_day:
+    post:
+      consumes:
+      - application/json
+      description: ValidateTaskDueDay
+      produces:
+      - application/json
+      responses: {}
+      summary: ValidateTaskDueDay config
+      tags:
+      - ValidateTaskDueDay
+  /ms-notification/validate_task_today:
+    post:
+      consumes:
+      - application/json
+      description: ValidateTaskToday
+      produces:
+      - application/json
+      responses: {}
+      summary: ValidateTaskToday config
+      tags:
+      - ValidateTaskToday
+swagger: "2.0"

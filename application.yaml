@@ -1,0 +1,16 @@
+server:
+  address: 8080
+
+jwt:
+  secret-key: wqGyEBBfPK9w3Lxw
+
+supabase:
+  api-url: 123
+  api-key: 123
+
+sendpulse:
+  client-id: 123
+  client-secret: 123
+  auth-url: 123/access_token
+  template-url: 123/templates
+  email-url: 123/emails
